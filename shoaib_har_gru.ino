@@ -7,7 +7,7 @@
 #include "shoaib_har_gru.h"
 
 // Tensor arena size — tune down/up as needed (start 48k)
-constexpr int kTensorArenaSize = 48 * 1024;
+constexpr int kTensorArenaSize = 17 * 1024;
 alignas(16) static uint8_t tensor_arena[kTensorArenaSize];
 
 // ---- Make resolver and interpreter static/globals so they outlive setup() ----
@@ -108,7 +108,7 @@ void setup() {
     Serial.print(i < tflInputTensor->dims->size-1 ? "x":"\n");
   }
 
-  Serial.print("Initializing IMU...");
+  Serial.println("Initializing IMU...");
   imuSensor.debug(Serial);
   imuSensor.onInterrupt(handle_signal);
   // initialize the IMU
